@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import home, contact, product
+from core.views import home, contact, product, productos_detalle
 
 
 urlpatterns = [
@@ -24,4 +24,7 @@ urlpatterns = [
     path("", home),
     path("contacto/", contact, name="contact"),
     path("productos/", product, name="product"),
+    # url parametrizada:
+    path("productos/detalle/<str:nombre_producto>", productos_detalle,name='productos_detalle')
+
 ]
