@@ -21,7 +21,7 @@ from core.views import home, contact, product, productos_detalle
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", home),
+    path("", home, name="home"),
     path("contacto/", contact, name="contact"),
     path("productos/", product, name="product"),
     # url parametrizada:
