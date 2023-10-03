@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import ContactForm
 
 
 # Create your views here.
@@ -13,12 +14,33 @@ def contact(request):
 def product(request):
     return render(request, "product.html")
 
-#view parametrizada:
+
+# view parametrizada:
 def productos_detalle(request, nombre_producto):
     nombre_prod = nombre_producto
 
     context = {
-        'nombre' : nombre_prod,
+        "nombre": nombre_prod,
     }
 
     return render(request, "productos_detalle.html", context)
+
+
+##contact form
+
+
+def contact(request):
+    # print('tipo de peticion: {}'.format(request.method))
+
+    contact_form = ContactForm
+    if request.method == "POST":
+        contact_form = ContactForm(data=request.POST)
+        if contact_form.is_valid():
+            first_name = request.POST.get("first_name", "")
+            last_name = request.POST.get("last_name", "")
+            contry = request.POST.get("contry", "")
+            city = request.POST.get("city", "")
+            email = request.POST.get("email", "")
+            descripcion = request.POST.get("descripcion", "")
+
+    return render(request, "core/contact.html", {"form": contact_form})

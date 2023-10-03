@@ -1,17 +1,44 @@
-{% extends 'master.html'%}
+{% extends 'master.html'%} {% block title %} Contacto {% endblock %} {% block
+content %}
+<!-- {% url 'contact' %}-->
+<div class="row">
+  <form action="" method="POST">
+    {% csrf_token %}
 
-
-{% block title %} Contacto {% endblock %} 
-
-{% block content %}
-
-<h1>Contact Page</h1>
-
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="mb-3">
+        <div class="row">
+          <div class="col">
+            {{ form.first_name }} {{ form.first_name.errors }}
+          </div>
+          <div class="col">
+            {{ form.last_name }} {{ form.last_name.errors }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">{{ form.contry }} {{ form.contry.errors }}</div>
+          <div class="col">{{ form.city }} {{ form.city.errors }}</div>
+        </div>
+        <label for="exampleFormControlInput1" class="form-label"></label>
+        {{ form.email }} {{ form.email.errors }}
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"></label>
+        {{ form.descripcion }} {{ form.descripcion.errors }} <input class="btn
+        btn-primary" type="submit" style=" margin-top: 3px; " value="Send" {% if
+        'ok' in request.GET %} disabled {% endif %} >
+      </div>
+    </div>
+  </form>
+  {% if 'ok' in request.GET %}
+  <div class="alert alert-success mt-5" role="alert">
+    <strong>The message was sent successfully</strong>
+  </div>
+  {% endif %} {% if 'error' in request.GET %}
+  <div class="alert alert-danger mt-5" role="alert">
+    <strong>Error sending message</strong>
+  </div>
+  {% endif %}
+</div>
 
 {% endblock %}
-
-
-
-
-
-
