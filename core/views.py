@@ -43,4 +43,4 @@ def contact(request):
             email = request.POST.get("email", "")
             descripcion = request.POST.get("descripcion", "")
 
-    return render(request, "core/contact.html", {"form": contact_form})
+    return render(request, "contact.html", {"form": contact_form})
