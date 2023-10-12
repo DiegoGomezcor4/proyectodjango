@@ -14,10 +14,18 @@
   <body>
     <header>
       
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <h5 class="text-white h4">Collapsed content</h5>
+          <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+      </div>
       <!-- nav con boostrap -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'img/logo.jpeg' %}" alt="" width="200" height="200" class="d-inline-block align-text-top">
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -38,9 +46,9 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="">Muebles</a></li>
-                  <li><a class="dropdown-item" href="{% url 'product' %}">Pantallas</a></li>
+                  <li><a class="dropdown-item" href="">Pantallas</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{% url 'contact' %}">Otros</a></li>
+                  <li><a class="dropdown-item" href="">Otros</a></li>
                 </ul>
               </li>
               <li class="nav-item">
