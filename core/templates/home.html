@@ -1,12 +1,35 @@
 {% extends 'master.html'%}
-
+{% load static %}
 
 {% block title %} Home {% endblock %} 
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/css/home.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<h1>Hello this is my Home Page</h1>
+<!-- carrousel -->
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static '/img/carrousel/banner-1.09230b108339.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static '/img/carrousel/banner-2.cfa682ec5d7d.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static '/img/carrousel/banner-3.1883c0f0a1c1.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
 {% endblock %}
 
