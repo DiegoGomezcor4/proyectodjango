@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/76b20e1d7a.js" crossorigin="anonymous"></script>
     {% block extra_css %}{% endblock %}
     
-    <title>{% block title %} {% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
   </head>
 
   <body>
@@ -29,7 +29,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="{% url 'home' %}">
-            <img class="logo" src="{% static 'img/logo.png' %}" alt="" width="150" height="150" class="d-inline-block align-text-top">
+            <img id="logo" class="logo" src="{% static 'img/logo.png' %}" alt="" class="d-inline-block align-text-top">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -91,22 +91,22 @@
 
     <!-- Right -->
     <div>
-      <a href="" class="me-4 link-secondary">
+      <a href="https://www.facebook.com/" class="me-4 link-secondary">
         <i class="fab fa-facebook-f"></i>
       </a>
-      <a href="" class="me-4 link-secondary">
+      <a href="https://twitter.com/?lang=es" class="me-4 link-secondary">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="" class="me-4 link-secondary">
+      <a href="https://www.google.com.ar/" class="me-4 link-secondary">
         <i class="fab fa-google"></i>
       </a>
-      <a href="" class="me-4 link-secondary">
+      <a href="https://www.instagram.com/" class="me-4 link-secondary">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="" class="me-4 link-secondary">
+      <a href="https://www.linkedin.com/" class="me-4 link-secondary">
         <i class="fab fa-linkedin"></i>
       </a>
-      <a href="" class="me-4 link-secondary">
+      <a href="https://github.com/proyectodjangocacgrupo6/proyectodjango" class="me-4 link-secondary">
         <i class="fab fa-github"></i>
       </a>
     </div>
