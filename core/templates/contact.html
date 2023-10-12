@@ -1,6 +1,6 @@
 {% extends 'master.html'%} {% block title %} Contacto {% endblock %} 
+{% block style %}css/contact.css{% endblock %}
 {% block content %}
-{% url 'contact' %}
   <div class="row">
     <form action="" method="POST">
       {% csrf_token %}
