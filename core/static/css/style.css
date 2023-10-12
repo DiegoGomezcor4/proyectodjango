@@ -6,5 +6,6 @@
 }
 
 .logo {
-    border-radius: 10px; /* Puedes ajustar el valor según tus preferencias */
+    border-radius: 10px; 
+    border: 2px solid gray;
 }
