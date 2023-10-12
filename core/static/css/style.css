@@ -5,7 +5,24 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+header {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  }
+
 .logo {
     border-radius: 10px; 
     border: 2px solid gray;
+    
+}
+
+/* propiedades logo header */
+#logo {
+    transition: all 0.3s ease;
+    width: 100px;
+    height: 100px;
+}
+
+#logo:hover {
+    width: 130px;
+    height: 130px;
 }
