@@ -1,6 +1,6 @@
-form {
-    margin: 10px;
+
+.formulario {
+    padding-top: 10px;
+    background-color: gray
 }
-main {
-    background-color: yellow;
-}
+

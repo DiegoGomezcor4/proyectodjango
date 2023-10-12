@@ -1,8 +1,12 @@
-{% extends 'master.html'%} {% block title %} Contacto {% endblock %} 
-{% block style %}css/contact.css{% endblock %}
+{% extends 'master.html'%}
+{% load static %}
+{% block title %} Contacto {% endblock %} 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/css/contact.css' %}">
+{% endblock %}
 {% block content %}
   <div class="row">
-    <form action="" method="POST">
+    <form class="formulario" action="" method="POST">
       {% csrf_token %}
 
       <div class="col-lg-8 col-md-10 mx-auto">
