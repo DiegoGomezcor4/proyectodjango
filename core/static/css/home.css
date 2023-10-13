@@ -1,21 +1,29 @@
-#cards {
-    margin: 10px;
-    margin-left: 15%;
-    margin-right: 15%;
-    
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
 }
 
 .card {
-    margin: 5px;
+  background-color: #f0f0f0;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  min-width: 200px; /* Ancho mínimo de las tarjetas */
+}
+  
+
+.card:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.card:hover {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
 #cardeck {
-    margin: 1rem;
+    margin: 2rem;
     background-color: lightblue;
 }
 
