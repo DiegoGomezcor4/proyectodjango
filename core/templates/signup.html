@@ -1,0 +1,16 @@
+{% extends 'master.html'%}
+{% load static %}
+{% block title %} Registrarse {% endblock %} 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/css/signup.css' %}">
+{% endblock %}
+{% block content %}
+    <h3>Registro<h3>
+    <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+        {{ alta_form.as_p }}
+        <input type="submit">
+    </form>
+  
+
+{% endblock %}
