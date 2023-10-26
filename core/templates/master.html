@@ -64,7 +64,9 @@
               <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Inicia sesión">Iniciar</button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Registrate">Registrarse</button>
+                <a href="{% url 'signup' %}">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Registrate">Registrarse</button>
+                </a>
               </div>
             </form>
           </div>
