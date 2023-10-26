@@ -76,3 +76,11 @@ class ContactForm(forms.Form):
             }
         ),
     )
+    
+    
+class AltaUsuarioForm(forms.Form):
+    nombre = forms.CharField(label='Nombre usuario', required=True)
+    apellido = forms.CharField(label='Apellido usuario', required=True)
+    email = forms.EmailField(label='email', required=True)
+    password = forms.CharField(label='contraseña', required=True)
+    ciudad = forms.CharField(label='ciudad', required=True)
