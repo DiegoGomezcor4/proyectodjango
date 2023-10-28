@@ -28,7 +28,8 @@
         </div>
         <div class="mb-3">
           <label for="exampleFormControlTextarea1" class="form-label"></label>
-          {{ form.descripcion }} {{ form.descripcion.errors }} <input class="btn
+          {{ form.descripcion }} {{ form.descripcion.errors }} 
+          <input class="btn
           btn-primary" type="submit" style=" margin-top: 3px; " value="Send" 
           {% if 'ok' in request.GET %} disabled="disabled" {% endif %} >
         </div>
