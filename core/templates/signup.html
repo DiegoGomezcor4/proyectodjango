@@ -5,12 +5,43 @@
     <link rel="stylesheet" href="{% static '/css/signup.css' %}">
 {% endblock %}
 {% block content %}
-    <h3>Registro<h3>
-    <form method="post" action="{% url 'signup' %}">
-        {% csrf_token %}
-        {{ alta_form.as_p }}
-        <input type="submit">
-    </form>
-  
+    <h3 style="text-align: center;">Registro de Usuario</h3>
+
+
+    <div class="row">
+
+        <form class="formulario" method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="mb-3">
+                  <div class="row">
+                    <div class="col">
+                        {{ alta_form.nombre }} {{ alta_form.nombre.errors }}
+                    </div>
+                    <div class="col">
+                        {{ alta_form.apellido }} {{ alta_form.apellido.errors }}
+                    </div>
+                  </div>
+
+                    <div class="row">
+                        <div class="col">{{ alta_form.ciudad }} {{ alta_form.ciudad.errors }}</div>
+                        <div class="col">{{ alta_form.password }} {{ alta_form.contry.password }}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label"></label>
+                            {{ alta_form.email }} {{ alta_form.email.errors }}
+                        </div>
+                        <div class="mb-3">
+                            <input class="btn
+                                btn-primary" type="submit" style=" margin-top: 3px; " value="Enviar" 
+                                {% if 'ok' in request.GET %} disabled="disabled" {% endif %} >
+                        </div>      
+                    </div>
+        </form>
+
+    </div>
 
 {% endblock %}

@@ -27,3 +27,8 @@ header {
     height: 110px;
     box-shadow: 0 5px 10px rgba(255, 255, 255, 0.911);
 }
+
+.formulario {
+    background-color: lightblue;
+    padding-top: 10px;
+}
