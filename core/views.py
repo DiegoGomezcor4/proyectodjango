@@ -3,6 +3,7 @@ from .forms import ContactForm, AltaUsuarioForm
 from .models import Usuario
 from django.urls import reverse
 
+
 # Create your views here.
 def home(request):
     return render(request, "home.html")
@@ -49,23 +50,27 @@ def contact(request):
 
 def signup(request):
     context = {}
-    
+
     if request.method == "POST":
         alta_form = AltaUsuarioForm(data=request.POST)
         if alta_form.is_valid():
             nuevo_usuario = Usuario(
-                nombre= alta_form.cleaned_data['nombre'],
-                apellido= alta_form.cleaned_data['apellido'],
-                email= alta_form.cleaned_data['email'],
-                password= alta_form.cleaned_data['password'],
-                ciudad= alta_form.cleaned_data['ciudad'],
+                nombre=alta_form.cleaned_data["nombre"],
+                apellido=alta_form.cleaned_data["apellido"],
+                email=alta_form.cleaned_data["email"],
+                password=alta_form.cleaned_data["password"],
+                ciudad=alta_form.cleaned_data["ciudad"],
             )
             nuevo_usuario.save()
             # messages.info(request, "alumno dado de alta correctamente")
-            return redirect(reverse('home'))
-            
+            return redirect(reverse("home"))
+
     else:
         alta_form = AltaUsuarioForm()
-        
-    context['alta_form'] = AltaUsuarioForm()
-    return render(request, 'signup.html', context)
+
+    context["alta_form"] = AltaUsuarioForm()
+    return render(request, "signup.html", context)
+
+
+def login(request):
+    return render(request, "login.html")
