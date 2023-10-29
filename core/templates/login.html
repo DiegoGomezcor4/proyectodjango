@@ -1,16 +1,23 @@
 {% extends 'master.html'%} {% load static %} {% block title %} login{%endblock%}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static '/css/contact.css' %}" />
+<link rel="stylesheet" href="{% static '/css/signup.css' %}" />
 {% endblock %} {% block content %}
-<div class="row">
-  <form class="formulario" action="" method="POST">
-    {% csrf_token %}
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <div class="mb-3">
+<p>Inicio de Sesion en este login</p>
+
+<form class="formulario" method="POST" action="{% url 'signup' %}">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col">
         <label for="exampleFormControlInput1" class="form-label"></label>
-        {{ form.email }} {{ form.email.errors }}
-      </div>
+        {{loginform.email }} {{ loginform.email.errors }}
+        <div class="col">
+            {{ loginform.password }} {{ loginform.contry.password }}
+        </div>
     </div>
-  </form>
-</div>
+    <div class="mb-3">
+        <input class="btn
+            btn-primary" type="submit" style=" margin-top: 3px; " value="Enviar" 
+            {% if 'ok' in request.GET %} disabled="disabled" {% endif %} >
+    </div>   
+</form>
 {% endblock %}

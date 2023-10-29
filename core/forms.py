@@ -76,11 +76,13 @@ class ContactForm(forms.Form):
             }
         ),
     )
-    
-    
+
+
 class AltaUsuarioForm(forms.Form):
-    nombre = forms.CharField(label='Nombre', required=True, 
-            widget=forms.TextInput(
+    nombre = forms.CharField(
+        label="Nombre",
+        required=True,
+        widget=forms.TextInput(
             attrs={
                 "type": "text",
                 "class": "form-control",
@@ -89,7 +91,9 @@ class AltaUsuarioForm(forms.Form):
             }
         ),
     )
-    apellido = forms.CharField(label='Apellido', required=True,
+    apellido = forms.CharField(
+        label="Apellido",
+        required=True,
         widget=forms.TextInput(
             attrs={
                 "type": "text",
@@ -99,7 +103,7 @@ class AltaUsuarioForm(forms.Form):
             }
         ),
     )
-    
+
     email = forms.EmailField(
         required=True,
         max_length=100,
@@ -113,11 +117,13 @@ class AltaUsuarioForm(forms.Form):
             }
         ),
     )
-    password = forms.CharField(label='contraseña', required=True,
+    password = forms.CharField(
+        label="contraseña",
+        required=True,
         max_length=15,
         min_length=5,
         widget=forms.PasswordInput(
-             attrs={
+            attrs={
                 "class": "form-control",
                 "style": "margin-top: 15px",
                 "placeholder": "Password",
@@ -125,9 +131,10 @@ class AltaUsuarioForm(forms.Form):
             }
         ),
     )
-    
-    
-    ciudad = forms.CharField(label='ciudad', required=True,
+
+    ciudad = forms.CharField(
+        label="ciudad",
+        required=True,
         max_length=15,
         min_length=5,
         widget=forms.TextInput(
@@ -137,6 +144,36 @@ class AltaUsuarioForm(forms.Form):
                 "style": "margin-top: 15px",
                 "placeholder": "Ciudad",
                 "aria-label": "Ciudad",
+            }
+        ),
+    )
+
+
+class loginForm(forms.Form):
+    email = forms.EmailField(
+        required=True,
+        max_length=100,
+        widget=forms.EmailInput(
+            attrs={
+                "type": "email",
+                "class": "form-control",
+                "id": "exampleFormControlInput1",
+                "name": "email",
+                "placeholder": "nombre@ejemplo.com",
+            }
+        ),
+    )
+    password = forms.CharField(
+        label="contraseña",
+        required=True,
+        max_length=15,
+        min_length=5,
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "style": "margin-top: 15px",
+                "placeholder": "Password",
+                "aria-label": "Password",
             }
         ),
     )
