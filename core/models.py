@@ -21,7 +21,7 @@ class Producto(models.Model):
     precio = models.FloatField(verbose_name='precio')
     descripcion = models.CharField(max_length=150, verbose_name='descripcion')
     nombre = models.CharField(max_length=100, verbose_name='nombre')
-    categoria = models.ManyToManyField(Categoria, on_delete=models.CASCADE) # relacion muchos a muchos / producto -> categoria
+    categoria = models.ManyToManyField(Categoria) # relacion muchos a muchos / producto -> categoria
     
  
 class Pedido(models.Model):
