@@ -1,11 +1,105 @@
-{% extends 'master.html'  %}
+{% extends 'master.html' %}
+{% load static %}
 
-
-{% block title %} Productos {% endblock %} 
+{% block title %} Productos {% endblock %}
 
 
 {% block content %}
 
-<h1>Hello this is my Products Page</h1>
+
+<main class="container my-5 d-flex gap-5">
+    <!-- SIDEBAR -->
+    <div class="flex-shrink-0 p-3" style="width: 280px;">
+        <h4 class="m-0 text-primary">
+            <span>Listado completo de productos</span>
+        </h4>
+        <p class="text-secondary border-bottom pb-3">{{ page_obj.paginator.count }} resultados</p>
+        <form method="GET" action="" class="d-flex mb-4 border-bottom pb-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar" name="q" aria-label="Search">
+        </form>
+        <h6>Categorías</h6>
+        <ul class="list-unstyled border-bottom pb-3"></ul>
+        <h6>Etiquetas</h6>
+        <ul class="list-unstyled row border-bottom pb-3">
+            {% for tag in tags %}
+            <li class="col-6">
+                <a href="" class="fs-6 text-secondary text-decoration-none d-flex align-items-center">
+                    <small>• {{ tag.name }}</small>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- PRODUCTOS -->
+    <div class="w-100">
+        <!-- TARJETA HORIZONTAL HARDCODEADA -->
+        <div class="card mb-3">
+            <a href="../templates/productos_detalle.html"></a>
+            <div class="row g-0">
+                <div class="col-md-3 d-flex align-items-center">
+                    <img src="{% static '/img/cards/product5-1.jpg' %}" class="img-fluid rounded-start"
+                        alt="foto producto">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <p class="card-text"><small class="text-body-secondary">Disponibilidad: SIN STOCK</small></p>
+                        <h4 class="card-title">Monitor Led Samsung 24'</h4>
+                        <p class="card-text">Monitor Led Samsung 24'' Ips 75hz - Lf24t350fhlczb Color Negro</p>
+                        <h5 class="card-text text-body-secondary"><strong>$ 90.000</strong></h5>
+                        <p class="card-text"><small class="text-body-secondary">Categoría: Monitores</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <a href="../templates/productos_detalle.html"></a>
+            <div class="row g-0">
+                <div class="col-md-3 d-flex align-items-center">
+                    <img src="{% static '/img/products/cel_4_1.webp' %}" class="img-fluid rounded-start"
+                        alt="foto producto">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <p class="card-text"><small class="text-body-secondary">Disponibilidad: SIN STOCK</small></p>
+                        <h4 class="card-title">Samsung Galaxy A14</h4>
+                        <p class="card-text">Samsung Galaxy A14 (MediaTek) 5G Dual SIM 128 GB light green 4 GB RAM</p>
+                        <h5 class="card-text text-body-secondary"><strong>$ 139.000</strong></h5>
+                        <p class="card-text"><small class="text-body-secondary">Categoría: SmartPhones</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETA HORIZONTAL -->
+        <div class="card mb-3">
+            <a href=""></a>
+            <div class="row g-0">
+                <div class="col-md-3 d-flex align-items-center">
+                    <img src="{{ ... }}" class="img-fluid rounded-start" alt="foto producto">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <p class="card-text"><small class="text-body-secondary">Disponibilidad: {{ product.discount
+                                }}</small></p>
+                        <h4 class="card-title">{{ product.name }}</h4>
+                        <p class="card-text">{{ product.descripcion }} "This is a wider card with supporting text below
+                            as a
+                            natural lead-in to additional
+                            content. This content is a little bit longer."</p>
+                        <h5 class="card-text text-body-secondary"><strong>$ {{ product.price }}</strong></h5>
+                        <p class="card-text"><small class="text-body-secondary">Categoría: {{ product.category
+                                }}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        <!-- PAGINACION -->
+
+</main>
+
 
 {% endblock %}
