@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import ContactForm, AltaUsuarioForm
+from .forms import ContactForm, AltaUsuarioForm, loginForm
+from django.contrib.auth import login, logout
 from .models import Usuario
 from django.urls import reverse
 
@@ -72,9 +73,24 @@ def signup(request):
     return render(request, "signup.html", context)
 
 
-def login(request):
-    return render(request, "login.html")
+# Validacion del Login
+def login_views(request):
+    if not request.user.is_authenticated:
+        if request.method == "POST":
+            form = loginForm(request, data=request.POST)
+            if form.is_valid():
+                email = form.get_email()
+                login(request, email)
+                return redirect("home")
+            else:
+                return render(request, "login.html")
+        else:
+            return render(request, "login.html", {"form": loginForm})
+    else:
+        return redirect("home")
 
 
-def logout(request):
-    return redirect("/")
+# validacion del logout
+def logout_view(request):
+    logout(request)
+    return redirect("home")

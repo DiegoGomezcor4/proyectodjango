@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class ContactForm(forms.Form):
@@ -149,7 +150,7 @@ class AltaUsuarioForm(forms.Form):
     )
 
 
-class loginForm(forms.Form):
+class loginForm(AuthenticationForm):
     email = forms.EmailField(
         required=True,
         max_length=100,
@@ -177,5 +178,3 @@ class loginForm(forms.Form):
             }
         ),
     )
-
-
