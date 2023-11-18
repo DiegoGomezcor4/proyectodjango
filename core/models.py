@@ -10,10 +10,15 @@ class Usuario(models.Model):
     password = models.CharField(verbose_name='password')
     ciudad = models.CharField(max_length=150, verbose_name='ciudad')
     
+    def __str__(self):
+        return f"{self.nombre}"
+    
     
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100, verbose_name='categoria')
     
+    def __str__(self):
+        return f"{self.nombre}"
     
 class Producto(models.Model):
     imagen = models.BinaryField(verbose_name='imagen')
@@ -22,6 +27,9 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=150, verbose_name='descripcion')
     nombre = models.CharField(max_length=100, verbose_name='nombre')
     categoria = models.ManyToManyField(Categoria) # relacion muchos a muchos / producto -> categoria
+    
+    def __str__(self):
+        return f"{self.nombre}"
     
  
 class Pedido(models.Model):
