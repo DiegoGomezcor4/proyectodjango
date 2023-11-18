@@ -150,6 +150,7 @@ class AltaUsuarioForm(forms.Form):
     )
 
 
+# Formulario basado en clases (AuthenticationForm hereda de forms.Form) -> class AuthenticationForm(forms.Form)
 class loginForm(AuthenticationForm):
     email = forms.EmailField(
         required=True,

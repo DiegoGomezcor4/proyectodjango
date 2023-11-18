@@ -83,7 +83,7 @@ def login_views(request):
                 login(request, email)
                 return redirect("home")
             else:
-                return render(request, "login.html")
+                return render(request, "login.html", {form: "form"})
         else:
             return render(request, "login.html", {"form": loginForm})
     else:
