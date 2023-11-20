@@ -1,8 +1,11 @@
+from datetime import datetime
 from django.shortcuts import render, redirect
 from .forms import ContactForm, AltaUsuarioForm, loginForm
 from django.contrib.auth import login, logout
 from .models import Usuario
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -94,3 +97,17 @@ def login_views(request):
 def logout_view(request):
     logout(request)
     return redirect("home")
+
+# listado de usuarios:
+@login_required  
+def usuarios_listado(request):
+   
+    listado = Usuario.objects.all().order_by('apellido')
+   
+    context = {
+       'fecha' : datetime.now(),
+       'cant_usuarios' : 0,
+       'listado_usuarios' : listado,
+       'cant_usuarios' : len(listado)
+    }
+    return render(request, "usuarios_listado.html", context)

@@ -24,6 +24,7 @@ from core.views import (
     signup,
     login_views,
     logout_view,
+    usuarios_listado,
 )
 
 
@@ -41,4 +42,5 @@ urlpatterns = [
     path("signup", signup, name="signup"),
     path("login/", login_views, name="login"),
     path("logout/", logout_view, name="logout"),
+    path('usuarios/listado', usuarios_listado, name='usuarios_listado'),
 ]

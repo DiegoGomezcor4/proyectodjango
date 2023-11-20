@@ -1,0 +1,36 @@
+{% extends 'master.html'%}
+{% load static %}
+{% block title %} Listado de Usuarios {% endblock %} 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/css/usuarios_listado.css' %}">
+{% endblock %}
+{% block content %}
+    <h2 style="text-align: center;">Listado de Usuarios {{ fecha }}</h2>
+
+    <ul>
+        {% for nombre_usuario in listado_usuarios %}
+            <li>
+                <!--Card content-->
+                <div class="card-body">
+        
+                    <!--Title-->
+                    <h4 class="card-title">Apellido: {{nombre_usuario.apellido | title}}</h4>
+                    <!--Text-->
+                    <p class="card-text">Nombre: {{nombre_usuario.nombre | title}}</p>
+                    <p class="card-text">Email: {{nombre_usuario.email | title}}</p>
+                    <p class="card-text">Ciudad: {{nombre_usuario.ciudad | title}}</p>
+
+                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                    <button type="button" class="btn btn-light-blue btn-md">Detalles...</button>
+            
+                </div>
+                
+            </li>
+        {% empty %}
+            <p>No hay inscriptos</p>
+        {% endfor %}
+        <h3 style="text-align: center;">Cantidad de Usuarios: {{cant_usuarios}}</h3>
+    </ul>
+
+{% endblock %}
+
