@@ -27,6 +27,8 @@ from core.views import (
     usuarios_listado,
 )
 
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -43,4 +45,7 @@ urlpatterns = [
     path("login/", login_views, name="login"),
     path("logout/", logout_view, name="logout"),
     path('usuarios/listado', usuarios_listado, name='usuarios_listado'),
+    
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='login_admin.html'), name='login_admin'),
+    path('accounts/logout/', auth_views.LogoutView.as_view(template_name='logout_admin.html'), name='logout_admin'),
 ]

@@ -120,10 +120,26 @@
                     <li><hr class="dropdown-divider" /></li>
                     <li><a class="dropdown-item" href="">Listado de Productos</a></li>
                   </ul>
-              {% endif %}  
-
-
+                {% endif %}
             </ul>
+
+            {% comment %} boton usuario {% endcomment %}
+
+            {% if user.is_authenticated %}
+            <!-- Example split danger button -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-danger">Bienvenid@ {{user.username}}</button>
+                  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    <li><a class="dropdown-item" href="#">Compras</a></li>
+                  </ul>
+                </div>
+
+              {% endif %} 
+
             <form class="d-flex">
               <input
                 class="form-control me-2"
@@ -132,28 +148,48 @@
                 aria-label="Search"
               />
               <div class="btn-group" role="group" aria-label="Basic example">
-                <a href="{% url 'login' %}">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    data-bs-title="Inicia sesión"
-                  >
-                    Iniciar
-                  </button>
-                </a>
-                <a href="{% url 'signup' %}">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    data-bs-title="Registrate"
-                  >
-                    Registrarse
-                  </button>
-                </a>
+                {% comment %} login django user {% endcomment %}
+
+          {% comment %} si no estoy logueado {% endcomment %}
+                {% if not user.is_authenticated %}
+
+                  {% comment %} boton iniciar {% endcomment %}
+                    <a href="{% url 'login_admin' %}">  
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        data-bs-title="Inicia sesión"
+                      >
+                        Iniciar
+                      </button>
+                    </a>
+
+                    {% comment %} boton registrarse {% endcomment %}
+                    <a href="{% url 'signup' %}">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        data-bs-title="Registrate"
+                      >
+                        Registrarse
+                      </button>
+                    </a>
+
+            {% comment %} si estoy logueado    {% endcomment %}
+                {% else %}
+                  {% comment %} mensaje bienvenida {% endcomment %}
+                  
+
+                  {% comment %} boton salir {% endcomment %}
+                  <a class='logout' href="{% url 'logout_admin' %}"><button type="button" class="btn btn-danger">Salir</button></a>
+              
+                {% endif %}
+
+                
               </div>
             </form>
           </div>

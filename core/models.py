@@ -23,11 +23,11 @@ class Categoria(models.Model):
         return f"{self.nombre}"
     
 class Producto(models.Model):
-    imagen = models.BinaryField(verbose_name='imagen')
-    descuento = models.FloatField(verbose_name='descuento')
-    precio = models.FloatField(verbose_name='precio')
-    descripcion = models.CharField(max_length=150, verbose_name='descripcion')
     nombre = models.CharField(max_length=100, verbose_name='nombre')
+    descripcion = models.CharField(max_length=150, verbose_name='descripcion')
+    imagen = models.BinaryField(verbose_name='imagen')
+    Stock = models.IntegerField(verbose_name='stock')
+    precio = models.FloatField(verbose_name='precio')
     categoria = models.ManyToManyField(Categoria) # relacion muchos a muchos / producto -> categoria
     
     def __str__(self):
