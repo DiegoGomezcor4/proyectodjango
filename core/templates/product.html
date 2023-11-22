@@ -73,33 +73,37 @@
         </div>
 
         <!-- TARJETA HORIZONTAL -->
-        <div class="card mb-3">
+        <!-- <div class="card mb-3">
+            {% for nombre_producto in listado_productos %}
             <a href=""></a>
             <div class="row g-0">
                 <div class="col-md-3 d-flex align-items-center">
-                    <img src="{{ ... }}" class="img-fluid rounded-start" alt="foto producto">
+                    <img src="{{nombre_producto.imagen}}" class="img-fluid rounded-start" alt="foto producto">
                 </div>
                 <div class="col-md-9">
                     <div class="card-body">
-                        <p class="card-text"><small class="text-body-secondary">Disponibilidad: {{ product.discount
-                                }}</small></p>
-                        <h4 class="card-title">{{ product.name }}</h4>
-                        <p class="card-text">{{ product.descripcion }} "This is a wider card with supporting text below
-                            as a
-                            natural lead-in to additional
-                            content. This content is a little bit longer."</p>
-                        <h5 class="card-text text-body-secondary"><strong>$ {{ product.price }}</strong></h5>
-                        <p class="card-text"><small class="text-body-secondary">Categoría: {{ product.category
-                                }}</small></p>
+                        <p class="card-text"><small class="text-body-secondary">Stock: {{nombre_producto.stock}}</small>
+                        </p>
+                        <h4 class="card-title">{{nombre_producto.nombre | title}}</h4>
+                        <p class="card-text">{{nombre_producto.descripcion | title}}</p>
+                        <h5 class="card-text text-body-secondary"><strong>$ {{nombre_producto.precio}}</strong></h5>
+                        <p class="card-text"><small class="text-body-secondary">Categoría:
+                                {{nombre_producto.categoria}}</small></p>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     
+        {% if listado_productos.count > 0 %}
+        <p>Cantidad de productos registrados: {{ listado_productos.count }}</p>
+
+        {% else %}
+        <p>No hay Productos</p>
+
+        {% endif %} -->
 
         <!-- PAGINACION -->
-
 </main>
-
 
 {% endblock %}
