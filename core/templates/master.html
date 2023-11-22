@@ -157,7 +157,8 @@
 
             {% endif %}
 
-            <form class="d-flex" method="post">
+            <form class="d-flex" method="post" action="{% url 'productos_detalle' 'mouse' %}">
+              {% csrf_token %}
                   <input
                       class="form-control me-2"
                       type="search"
