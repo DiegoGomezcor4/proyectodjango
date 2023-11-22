@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms import ValidationError
 
+from core.models import Producto
+
 
 class ContactForm(forms.Form):
     first_name = forms.CharField(
@@ -191,3 +193,24 @@ class loginForm(AuthenticationForm):
             }
         ),
     )
+
+# formulario asociado a un modelo
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ['nombre', 'descripcion', 'Stock', 'precio', 'categoria']
+
+    imagen = forms.ImageField(required=False)
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+
+        # Procesa el campo de imagen si se proporciona
+        imagen = self.cleaned_data.get('imagen')
+        if imagen:
+            instance.imagen = imagen.read()  # Guarda los bytes de la imagen en el campo de la base de datos
+
+        if commit:
+            instance.save()
+
+        return instance

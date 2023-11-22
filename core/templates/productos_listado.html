@@ -15,9 +15,16 @@
                 <p>Nombre: {{nombre_producto.nombre | title}}</p>
                 <p>Descripcion: {{nombre_producto.descripcion | title}}</p>
                 <p>Imagen: {{nombre_producto.imagen}}</p>   
-                <p>Stock: {{nombre_producto.stock}}</p>   
+                <p>Stock: {{nombre_producto.Stock}}</p>   
                 <p>Precio: {{nombre_producto.precio}}</p>  
-                <p>Categoria: {{nombre_producto.categoria}}</p>  
+                <p>Categorías:
+                    {% for categoria in nombre_producto.categoria.all %}
+                        {{ categoria.nombre }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                <div>
+                    <button type="button" class="btn btn-light-blue btn-md">Detalles...</button>
+                </div>
             </li>
         {% endfor %}
     </ul>
