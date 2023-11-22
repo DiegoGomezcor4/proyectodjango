@@ -1,14 +1,16 @@
-{% extends 'master.html'  %}
-
-
-{% block title %} Home {% endblock %} 
-
-
+{% extends 'master.html'%}
+{% load static %}
+{% block title %} {{ producto.nombre }} {% endblock %} 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/css/productos_detalle.css' %}">
+{% endblock %}
 {% block content %}
 
-<h1>Detalles del producto {{ nombre }}</h1>
+    <h1>{{ producto.nombre }}</h1>
+    <p>{{ producto.descripcion }}</p>
 
 {% endblock %}
+
 
    
    

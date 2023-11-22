@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import ContactForm, AltaUsuarioForm, loginForm
 from django.contrib.auth import login, logout
 from .models import Usuario, Producto
@@ -24,17 +24,17 @@ def product(request):
 
 # view parametrizada:
 def productos_detalle(request, nombre_producto):
-    nombre_prod = nombre_producto
+
+    producto = get_object_or_404(Producto, nombre=nombre_producto)
 
     context = {
-        "nombre": nombre_prod,
+        "producto": producto,
     }
 
     return render(request, "productos_detalle.html", context)
 
 
 ##contact form
-
 
 def contact(request):
     # print('tipo de peticion: {}'.format(request.method))
