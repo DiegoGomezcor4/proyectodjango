@@ -25,6 +25,7 @@ from core.views import (
     login_views,
     logout_view,
     usuarios_listado,
+    crear_producto,
     
 )
 from core import views
@@ -40,7 +41,7 @@ urlpatterns = [
     path("productos/", product, name="product"),
     # url parametrizada:
     path(
-        "productos/detalle/<str:nombre_producto>",
+        "productos/detalle/p<str:nombre_producto>/",
         productos_detalle,
         name="productos_detalle",
     ),
@@ -53,4 +54,6 @@ urlpatterns = [
     path('accounts/logout/', auth_views.LogoutView.as_view(template_name='logout_admin.html'), name='logout_admin'),
     
     path('productos/listado', views.ProductoListView.as_view(), name='productos_listado'),
+    
+    path('crear_producto/', crear_producto, name='crear_producto'),
 ]
