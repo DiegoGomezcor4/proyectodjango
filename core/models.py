@@ -36,10 +36,16 @@ class Producto(models.Model):
  
 class Pedido(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE) # relacion uno a muchos / usuario->pedidos
-    fecha_operacion = models.DateField()    
+    fecha_operacion = models.DateField() 
+
+    def __str__(self):
+        return f"{self.usuario} {self.fecha_operacion}"   
 
 
 class DetallePedido(models.Model): # relacion muchos a uno / DetallePedido -> Pedido
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"(pedido: {self.pedido}) (descripcion producto: {self.producto}) (cantidad: {self.cantidad})"

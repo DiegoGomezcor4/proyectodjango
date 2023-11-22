@@ -26,6 +26,16 @@
 
   <body>
     <header>
+
+      {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+
+            </ul>
+        {% endif %}
+
       <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
           <h5 class="text-white h4">Collapsed content</h5>
@@ -118,7 +128,7 @@
                     <li><a class="dropdown-item" href="{% url 'usuarios_listado' %}">Listado de Usuarios</a></li>
                     <li><a class="dropdown-item" href="">Listado de Categorias</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="">Listado de Productos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'productos_listado' %}">Listado de Productos</a></li>
                   </ul>
                 {% endif %}
             </ul>
@@ -128,7 +138,7 @@
             {% if user.is_authenticated %}
                 <!-- Example split danger button -->
                 <div class="btn-group">
-                  <button type="button" class="btn btn-danger">Bienvenid@ {{user.username}}</button>
+                  <button type="button" class="btn btn-danger" onclick="window.location.href='{% url 'admin:index' %}'">Bienvenid@ {{user.username}}</button>
                   <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="visually-hidden">Toggle Dropdown</span>
                   </button>

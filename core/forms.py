@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from django.forms import ValidationError
 
 
 class ContactForm(forms.Form):
@@ -147,8 +148,19 @@ class AltaUsuarioForm(forms.Form):
                 "aria-label": "Ciudad",
             }
         ),
+        error_messages={
+            'invalid': 'La ciudad no es válida. Por favor, ingrese una ciudad válida.'
+        }
     )
 
+    
+    # Validación en el backend:
+    def clean(self):
+        cleaned_data = super().clean()
+        ciudad = cleaned_data.get('ciudad')
+        # Ejemplo de validación de la ciudad (puedes personalizar esto según tus necesidades)
+        if ciudad.lower() not in ['buenos aires', 'cordoba', 'rosario']:
+            raise ValidationError({'ciudad': self.fields['ciudad'].error_messages['invalid']})
 
 # Formulario basado en clases (AuthenticationForm hereda de forms.Form) -> class AuthenticationForm(forms.Form)
 class loginForm(AuthenticationForm):

@@ -99,7 +99,7 @@ def logout_view(request):
     logout(request)
     return redirect("home")
 
-# listado de usuarios:
+# listado de usuarios requiere login:
 @login_required  
 def usuarios_listado(request):
    
@@ -123,3 +123,9 @@ class ProductoListView(LoginRequiredMixin, ListView):
     context_object_name = 'listado_productos'
     template_name = 'productos_listado.html'
     ordering = ['nombre']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Agregar la fecha actual al contexto
+        context['fecha_actual'] = datetime.now()
+        return context
