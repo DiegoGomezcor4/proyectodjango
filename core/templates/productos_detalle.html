@@ -10,8 +10,13 @@
     <p>Descripcion: {{ producto.descripcion }}</p>
     <p>Stock: {{ producto.Stock }}</p>
     <p>Precio: {{ producto.precio }}</p>
-    <!-- <p>Categoria{{ producto.categoria }}</p> -->
-    
+    <!-- Iterar sobre las categorías asociadas al producto -->
+    <p>Categorías:
+        {% for categoria in producto.categoria.all %}
+            {{ categoria.nombre }}
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+</p>
 
     
 

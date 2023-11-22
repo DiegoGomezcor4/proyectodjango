@@ -157,17 +157,18 @@
 
             {% endif %}
 
-            <form class="d-flex" method="post" action="{% url 'productos_detalle' 'mouse' %}">
-              {% csrf_token %}
-                  <input
-                      class="form-control me-2"
-                      type="search"
-                      placeholder="Buscar"
-                      aria-label="Search"
-                      name="nombre_producto" 
-                  />
-                  <!-- <button class="btn btn-outline-success" type="submit">Buscar</button> -->
-            </form>
+            <form class="d-flex" method="get" action="{% url 'productos_detalle' %}" onsubmit="return validarFormulario()">
+              {% comment %} {% csrf_token %} {% endcomment %}
+              <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Buscar"
+                  aria-label="Search"
+                  name="nombre_producto"
+                  id="campo_busqueda"
+              />
+              <!-- <button class="btn btn-outline-success" type="submit">Buscar</button> -->
+          </form>
                 
                 {% comment %} login django user {% endcomment %}
 
@@ -378,4 +379,22 @@
       (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
     );
   </script>
+
+  {% comment %} para que funcione el formulario {% endcomment %}
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+      function validarFormulario() {
+          var valorCampo = $('#campo_busqueda').val();
+
+          // Verificar que el campo no esté vacío
+          if (valorCampo.trim() === '') {
+              alert('Por favor, ingrese un valor en el campo de búsqueda.');
+              return false; // Evitar que el formulario se envíe
+          }
+
+          // Si el campo no está vacío, el formulario se envía normalmente
+          return true;
+      }
+  </script>
+
 </html>
