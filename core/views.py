@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import get_object_or_404, render, redirect
-from .forms import ContactForm, AltaUsuarioForm, loginForm
+from .forms import ContactForm, AltaUsuarioForm, ProductoForm, loginForm
 from django.contrib.auth import login, logout
 from .models import Usuario, Producto
 from django.urls import reverse
@@ -129,3 +129,17 @@ class ProductoListView(LoginRequiredMixin, ListView):
         # Agregar la fecha actual al contexto
         context['fecha_actual'] = datetime.now()
         return context
+    
+    
+# crear producto:
+
+def crear_producto(request):
+    if request.method == 'POST':
+        form = ProductoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_productos')  # Redirige a la página de lista de productos
+    else:
+        form = ProductoForm()
+
+    return render(request, 'crear_producto.html', {'form': form})

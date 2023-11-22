@@ -129,6 +129,7 @@
                     <li><a class="dropdown-item" href="">Listado de Categorias</a></li>
                     <li><hr class="dropdown-divider" /></li>
                     <li><a class="dropdown-item" href="{% url 'productos_listado' %}">Listado de Productos</a></li>
+                    <li><a class="dropdown-item" href="{% url 'crear_producto' %}">Crear Productos</a></li>
                   </ul>
                 {% endif %}
             </ul>
@@ -157,7 +158,7 @@
 
             {% endif %}
 
-            <form class="d-flex" method="get" action="{% url 'productos_detalle' %}" onsubmit="return validarFormulario()">
+            <form class="d-flex" method="get" onsubmit="return validarFormulario()">
               {% comment %} {% csrf_token %} {% endcomment %}
               <input
                   class="form-control me-2"

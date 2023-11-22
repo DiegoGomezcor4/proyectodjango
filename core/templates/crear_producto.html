@@ -1,0 +1,21 @@
+
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %} Crear Productos {% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/css/crear_producto.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <h2>Crear Productos</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Producto</button>
+    </form>
+
+{% endblock %}
