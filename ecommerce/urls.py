@@ -25,9 +25,12 @@ from core.views import (
     login_views,
     logout_view,
     usuarios_listado,
+    
 )
+from core import views
 
 from django.contrib.auth import views as auth_views
+
 
 
 urlpatterns = [
@@ -48,4 +51,6 @@ urlpatterns = [
     
     path('accounts/login/', auth_views.LoginView.as_view(template_name='login_admin.html'), name='login_admin'),
     path('accounts/logout/', auth_views.LogoutView.as_view(template_name='logout_admin.html'), name='logout_admin'),
+    
+    path('productos/listado', views.ProductoListView.as_view(), name='productos_listado'),
 ]

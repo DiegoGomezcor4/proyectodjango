@@ -1,0 +1,34 @@
+{% extends 'master.html'%}
+{% load static %}
+{% block title %} Listado de Productos {% endblock %} 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/css/productos_listado.css' %}">
+{% endblock %}
+{% block content %}
+    <h2 style="text-align: center;">Listado de Productos {{ fecha }}</h2>
+
+    <h2>2023</h2>
+    <p>listado de Productos</p>
+    <ul>
+        {% for nombre_producto in listado_productos %}
+            <li>
+                <p>Nombre: {{nombre_producto.nombre | title}}</p>
+                <p>Descripcion: {{nombre_producto.descripcion | title}}</p>
+                <p>Imagen: {{nombre_producto.imagen}}</p>   
+                <p>Stock: {{nombre_producto.stock}}</p>   
+                <p>Precio: {{nombre_producto.precio}}</p>  
+                <p>Categoria: {{nombre_producto.categoria}}</p>  
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if listado_productos.count > 0 %}
+        <p>cantidad de docentes registrados: {{ listado_productos.count }}</p>
+
+    {% else %}
+        <p>No hay Productos</p>
+
+    {% endif %}
+
+{% endblock %}
+

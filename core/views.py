@@ -2,9 +2,10 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 from .forms import ContactForm, AltaUsuarioForm, loginForm
 from django.contrib.auth import login, logout
-from .models import Usuario
+from .models import Usuario, Producto
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -111,3 +112,14 @@ def usuarios_listado(request):
        'cant_usuarios' : len(listado)
     }
     return render(request, "usuarios_listado.html", context)
+
+
+
+
+# vistas basadas en clases:
+
+class ProductoListView(LoginRequiredMixin, ListView):
+    model = Producto
+    context_object_name = 'listado_productos'
+    template_name = 'productos_listado.html'
+    ordering = ['nombre']
