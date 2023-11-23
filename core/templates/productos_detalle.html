@@ -16,7 +16,9 @@
             {{ categoria.nombre }}
             {% if not forloop.last %}, {% endif %}
         {% endfor %}
-</p>
+    </p>
+
+    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
 
     
 
