@@ -161,7 +161,7 @@ class AltaUsuarioForm(forms.Form):
         cleaned_data = super().clean()
         ciudad = cleaned_data.get('ciudad')
         # Ejemplo de validación de la ciudad (puedes personalizar esto según tus necesidades)
-        if ciudad.lower() not in ['buenos aires', 'cordoba', 'rosario']:
+        if ciudad.lower() in ['corrientes', 'cordoba', 'rosario']:
             raise ValidationError({'ciudad': self.fields['ciudad'].error_messages['invalid']})
 
 # Formulario basado en clases (AuthenticationForm hereda de forms.Form) -> class AuthenticationForm(forms.Form)

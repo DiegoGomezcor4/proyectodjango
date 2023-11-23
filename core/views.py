@@ -138,7 +138,9 @@ def crear_producto(request):
         form = ProductoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('productos_listado')  # Redirige a la página de lista de productos
+            return redirect('productos_listado')  # Redirige a la página de listado de productos
+        else:
+            print(form.errors)
     else:
         form = ProductoForm()
 

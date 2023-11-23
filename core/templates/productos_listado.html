@@ -10,8 +10,8 @@
     <h2>{{ fecha_actual }}</h2>
     <p>listado de Productos</p>
     <ul>
-        {% for nombre_producto in listado_productos %}
-            <li>
+        {% comment %} {% for nombre_producto in listado_productos %} {% endcomment %}
+            {% comment %} <li>
                 <p>Nombre: {{nombre_producto.nombre | title}}</p>
                 <p>Descripcion: {{nombre_producto.descripcion | title}}</p>  
                 <p>Stock: {{nombre_producto.Stock}}</p>   
@@ -30,8 +30,26 @@
                 <div>
                     <button type="button" class="btn btn-light-blue btn-md">Detalles...</button>
                 </div>
-            </li>
-        {% endfor %}
+            </li> {% endcomment %}
+
+            {% comment %} {% endfor %} {% endcomment %}
+
+            <div class="card-container row-cols-md-5 g-4">
+                {% for nombre_producto in listado_productos %}
+                <div class="col">
+                  <div class="card" style="width: 18rem; height: 30rem;">
+                    <!-- Usar el atributo onerror para proporcionar una imagen predeterminada -->
+                    <img src="{{ nombre_producto.imagen.url }}" onerror="this.src='/ruta/a/imagen_default.jpg'" class="card-img-top" alt="{{ nombre_producto.nombre }}">
+                    <div class="card-body">
+                      <h5 class="card-title">${{nombre_producto.precio}}</h5>
+                      <p class="card-text">{{nombre_producto.nombre | title}}</p>
+                      <a href="#" class="btn btn-primary">Detalles</a>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+        
     </ul>
 
     {% if listado_productos.count > 0 %}
