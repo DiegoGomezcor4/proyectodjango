@@ -6,8 +6,6 @@ GRUPO 6:
 + Ronald Palacios - rpalacioso12@gmail.com
 + Lorena Fracchia - lorenamfra@gmail.com 
 + Ezequiel Alejandro Acevedo
-+ Luis Alberto Mendozzi 		
-+ Silvia Noemí Colque
 
 #
 ### Estructura del proyecto
