@@ -43,7 +43,7 @@ urlpatterns = [
     path("productos/", product, name="product"),
     # url parametrizada:
     path(
-        "productos/detalle/p<str:nombre_producto>/",
+        "productos/detalle/<str:nombre_producto>/",
         productos_detalle,
         name="productos_detalle",
     ),
