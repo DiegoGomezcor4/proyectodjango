@@ -1,0 +1,32 @@
+{% extends 'master.html'%}
+{% load static %}
+{% block title %} Listado de Productos buscados {% endblock %} 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/css/productos_buscados.css' %}">
+{% endblock %}
+{% block content %}
+
+    <h2 style="text-align: center;">Productos Buscados: <strong>{{ request.GET.nombre_producto }}</strong></p></h2>
+
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        {% for producto in resultados %}
+            <div class="col">
+                <div class="card">
+                    <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <p class="card-text">{{ producto.descripcion }}</p>
+                        <p class="card-text">Precio: ${{ producto.precio }}</p>
+                        <!-- Puedes agregar más campos según tus necesidades -->
+    
+                        <!-- Por ejemplo, un botón para más detalles -->
+                        <a href="" class="btn btn-primary">Detalles</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+  
+
+{% endblock %}
+

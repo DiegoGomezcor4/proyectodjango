@@ -159,7 +159,7 @@
 
             {% endif %}
 
-            <form class="d-flex" method="get" onsubmit="return validarFormulario()">
+            <form class="d-flex" method="get" onsubmit="return validarFormulario()" action="{% url 'buscar_producto' %}">
               {% comment %} {% csrf_token %} {% endcomment %}
               <input
                   class="form-control me-2"
@@ -169,7 +169,7 @@
                   name="nombre_producto"
                   id="campo_busqueda"
               />
-              <!-- <button class="btn btn-outline-success" type="submit">Buscar</button> -->
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
           </form>
                 
                 {% comment %} login django user {% endcomment %}

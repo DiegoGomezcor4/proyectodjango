@@ -28,6 +28,7 @@ from core.views import (
     logout_view,
     usuarios_listado,
     crear_producto,
+    buscar_producto,
     
 )
 from core import views
@@ -58,6 +59,8 @@ urlpatterns = [
     path('productos/listado', views.ProductoListView.as_view(), name='productos_listado'),
     
     path('crear_producto/', crear_producto, name='crear_producto'),
+    
+    path('buscar_producto/', buscar_producto, name='buscar_producto'),
 ]
 
 if settings.DEBUG:

@@ -131,7 +131,7 @@ class ProductoListView(LoginRequiredMixin, ListView):
         return context
     
     
-# crear producto:
+# vista crear producto:
 
 def crear_producto(request):
     if request.method == 'POST':
@@ -145,3 +145,14 @@ def crear_producto(request):
         form = ProductoForm()
 
     return render(request, 'crear_producto.html', {'form': form})
+
+# para buscar productos desde el buscador de header
+
+def buscar_producto(request):
+    if 'nombre_producto' in request.GET:
+        nombre_producto = request.GET['nombre_producto']
+        resultados = Producto.objects.filter(nombre__icontains=nombre_producto)
+    else:
+        resultados = Producto.objects.all()
+
+    return render(request, 'productos_buscados.html', {'resultados': resultados})
