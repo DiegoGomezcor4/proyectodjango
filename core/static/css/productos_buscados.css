@@ -6,5 +6,5 @@
 .card-img-top {
     width: 100%; /* Ajusta el ancho de la imagen al 100% */
     object-fit: cover;
-    height: 400px; /* Ajusta la altura de la imagen según tus necesidades */
+    height: 100%; /* Ajusta la altura de la imagen según tus necesidades */
 }
