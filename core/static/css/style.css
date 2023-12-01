@@ -36,3 +36,8 @@ header {
 .mensaje {
     color: white;
 }
+
+.btn {
+    margin-right: 2px;
+    margin-left: 2px;
+}
