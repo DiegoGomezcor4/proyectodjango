@@ -9,49 +9,47 @@
 
     <h2>{{ fecha_actual }}</h2>
     <p>listado de Productos</p>
-    <ul>
-        {% comment %} {% for nombre_producto in listado_productos %} {% endcomment %}
-            {% comment %} <li>
-                <p>Nombre: {{nombre_producto.nombre | title}}</p>
-                <p>Descripcion: {{nombre_producto.descripcion | title}}</p>  
-                <p>Stock: {{nombre_producto.Stock}}</p>   
-                <p>Precio: {{nombre_producto.precio}}</p>  
-                {% if nombre_producto.imagen %}
-                    <img src="{{ nombre_producto.imagen.url }}" alt="{{ nombre_producto.nombre }}">
-                {% else %}
-                    <p>No hay imagen disponible</p>
-                {% endif %}
-                <p>Categorías:
-                    {% for categoria in nombre_producto.categoria.all %}
-                        {{ categoria.nombre }}
-                        {% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                
-                <div>
-                    <button type="button" class="btn btn-light-blue btn-md">Detalles...</button>
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    
+        .card {
+            width: 48%;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc; /* Añade un borde para visualizar el tamaño de la tarjeta */
+        }
+    
+        .card img {
+            width: 100%;
+            height: 200px; /* Ajusta la altura según tus necesidades */
+            object-fit: contain; /* Cambia a contain para que la imagen se ajuste sin recortar */
+        }
+    </style>
+    
+    <ul class="list-unstyled">
+        <div class="card-container">
+            {% for nombre_producto in listado_productos %}
+            <div class="card">
+                <img src="{{ nombre_producto.imagen.url }}" class="card-img-top img-fluid" alt="{{ nombre_producto.nombre }}">
+                <div class="card-body">
+                    <h5 class="card-title">${{ nombre_producto.precio }}</h5>
+                    <p class="card-text">{{ nombre_producto.nombre | title }}</p>
+                    <a href="{% url 'productos_detalle' nombre_producto.nombre %}" class="btn btn-primary">Detalles</a>
                 </div>
-            </li> {% endcomment %}
-
-            {% comment %} {% endfor %} {% endcomment %}
-
-            <div class="card-container row-cols-md-5 g-4">
-                {% for nombre_producto in listado_productos %}
-                <div class="col">
-                  <div class="card">
-                    <!-- Usar el atributo onerror para proporcionar una imagen predeterminada -->
-                    <img src="{{ nombre_producto.imagen.url }}" class="card-img-top img-fluid" alt="{{ nombre_producto.nombre }}">
-                    <div class="card-body">
-                      <h5 class="card-title">${{nombre_producto.precio}}</h5>
-                      <p class="card-text">{{nombre_producto.nombre | title}}</p>
-                      <a href="{% url 'productos_detalle' nombre_producto.nombre %}" class="btn btn-primary">Detalles</a>
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-        
+            </div>
+            {% endfor %}
+        </div>
     </ul>
-
+    
+    
+    
+    
+    
+    
+    
     {% if listado_productos.count > 0 %}
         <p>cantidad de Productos: {{ listado_productos.count }}</p>
 
