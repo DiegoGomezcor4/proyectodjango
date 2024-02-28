@@ -24,8 +24,8 @@ header {
 
 #logo:hover {
     /* width: 110px;
-    height: 110px;
-    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.911); */
+    height: 110px; */
+    box-shadow: 0 0px 10px rgba(255, 255, 255, 0.911); 
     animation: pulse 2s infinite alternate; /* La animación durará 2 segundos y se repetirá infinitamente */
 }
 
