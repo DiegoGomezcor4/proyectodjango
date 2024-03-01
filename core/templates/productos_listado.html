@@ -33,8 +33,16 @@
         <div class="card-container">
             {% for nombre_producto in listado_productos %}
             <div class="card">
-                <img src="{{ nombre_producto.imagen.url }}" class="card-img-top img-fluid" alt="{{ nombre_producto.nombre }}">
-                <div class="card-body">
+                {% if nombre_producto.imagen %}
+                    <img src="{{ nombre_producto.imagen.url }}" class="card-img-top img-fluid" alt="{{ nombre_producto.nombre }}">
+                {% else %}
+
+                    <!-- Manejo para cuando no hay imagen asociada -->
+                    <img src="{% static 'img/default.jpeg' %}" alt="no hay imagen del producto" >
+
+                    <p>No hay imagen disponible</p>
+                {% endif %}
+                    <div class="card-body">
                     <h5 class="card-title">${{ nombre_producto.precio }}</h5>
                     <p class="card-text">{{ nombre_producto.nombre | title }}</p>
                     <a href="{% url 'productos_detalle' nombre_producto.nombre %}" class="btn btn-primary">Detalles</a>
