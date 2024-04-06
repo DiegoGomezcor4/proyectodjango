@@ -1,3 +1,27 @@
 main {
-    background-color: lightcoral;
+    background-color: lightgray;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card {
+    width: auto;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc; /* Añade un borde para visualizar el tamaño de la tarjeta */
+    border-radius: 10px;
+
+    /* Agrega una sombra */
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease; /* Agrega una transición suave al transformar */
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Cambia la sombra al pasar el mouse */
+    transform: translateY(-5px); /* Desplaza la tarjeta 5px hacia arriba al pasar el mouse */
+    background-color: gray;
 }
