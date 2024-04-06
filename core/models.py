@@ -25,7 +25,7 @@ class Categoria(models.Model):
 class Producto(models.Model):
     nombre = models.CharField(max_length=100, verbose_name='nombre')
     descripcion = models.CharField(max_length=150, verbose_name='descripcion')
-    imagen = models.ImageField(upload_to='\media\products',null=True, blank=True, verbose_name='imagen',default='media\products\default.jpeg')
+    imagen = models.ImageField(upload_to='products',null=True, blank=True, verbose_name='imagen',default='media\products\default.jpeg')
     Stock = models.IntegerField(verbose_name='stock')
     precio = models.FloatField(verbose_name='precio')
     categoria = models.ManyToManyField(Categoria) # relacion muchos a muchos / producto -> categoria
